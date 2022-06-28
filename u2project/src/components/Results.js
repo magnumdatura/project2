@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PopupModal from "./PopupModal";
-import Result from "../Result";
 
 function Results(props) {
   const [click, setClick] = useState(false);
   const [result, setResult] = useState({});
 
   let resultsArr = props.results;
-  // console.table(resultsArr);
+  console.table(resultsArr);
 
   let displayArr = [];
   for (let j = 0; j < resultsArr.length; j++) {

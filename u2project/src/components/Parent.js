@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { isCompositeComponent } from "react-dom/test-utils";
-import data from "./../data";
+// import { isCompositeComponent } from "react-dom/test-utils";
+// import data from "./../data";
 import Results from "./Results";
 import Search from "./Search";
 
@@ -33,6 +33,7 @@ const Parent = () => {
 
   //     const data = await res.json();
   //     setData(data);
+
   //     setName(data.results[0].name);
   //     setDescription(data.results[0].description);
 
@@ -46,6 +47,7 @@ const Parent = () => {
 
   //     setPrepTime(data.results[0].prep_time_minutes);
   //     setImage(data.results[0].thumbnail_url);
+  
   //   } catch (err) {
   //     setError(err.message);
   //   }

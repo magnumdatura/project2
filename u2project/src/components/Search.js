@@ -1,10 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "./../data";
 
 // console.log(x.replace(/ /g, "_"))
 
 function Search(props) {
   const [search, setSearch] = useState("");
+  // const [data, setData] = useState("");
+  // const [error, setError] = useState(null);
+
+  // const options = {
+  //   method: "GET",
+  //   headers: {
+  //     "X-RapidAPI-Key": "a9667111f2msh545702bad6cda6dp1b4b30jsn5a2f952e5907",
+  //     "X-RapidAPI-Host": "tasty.p.rapidapi.com",
+  //   },
+  // };
+
+  //  const fetchPost = async (url) => {
+  //   try {
+  //     const res = await fetch(url, options);
+
+  //     if (res.status !== 200) {
+  //       throw new Error("Something went wrong.");
+  //     }
+
+  //     const data = await res.json();
+  //     setData(data);
+  
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const url =
+  //     "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes";
+  //   fetchPost(url);
+  // }, [setSearch, search]);
+
   const handleSearchChange = (event) => {
     const rawSearch = event.target.value;
     const filterSearch = rawSearch.replace(/ /g, "_");
@@ -18,6 +51,8 @@ function Search(props) {
       for (let k = 0; k < data.results[i].tags.length; k++) {
         if (data.results[i].tags[k].name === search) {
           searchPool.push(data.results[i]);
+        } else if (search !== data.results[i].tags[k].name) {
+          console.log("Sorry! Try a different search term")
         }
       }
     }
