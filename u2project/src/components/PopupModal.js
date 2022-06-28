@@ -20,7 +20,9 @@ const PopupModal = (props) => {
 };
 
 const OverLay = (props) => {
-  const obj = JSON.parse(props.instructions);
+  // console.log(props.instructions);
+  const obj = JSON.parse(props.instructions); // got to JSON.parse to turn the props.instructions, which is currently a JSON.string, back into an array of objects
+  // console.log(obj);
   const indivRender = obj.map((item) => {
     return (
       <div>
@@ -35,11 +37,8 @@ const OverLay = (props) => {
         <header className={styles.header}>
           <h2>{props.name}</h2>
         </header>
-        <img src={props.image} width="500" />
+        <img src={props.image} className={styles.image} />
         <div className={styles.content}>{indivRender}</div>
-        {/* <footer className={styles.actions}>
-          <Button onClick={props.okayClicked}>Okay</Button>
-        </footer> */}
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import data from "./../data";
 
-// console.log(x.replace(/ /g, "_"))
+// console.log(x.replace(/ /g, "_")) / /g instead of "__" because "__" will only replace the first instance of "__"
 
 function Search(props) {
   const [search, setSearch] = useState("");
+  const [displaySearch, setDisplaySearch] = useState("");
   // const [data, setData] = useState("");
   // const [error, setError] = useState(null);
 
@@ -42,7 +43,7 @@ function Search(props) {
     const rawSearch = event.target.value;
     const filterSearch = rawSearch.replace(/ /g, "_");
     setSearch(filterSearch);
-    searchPool(search);
+    // searchPool(search);
   };
 
   const searchPool = (search) => {
@@ -63,7 +64,9 @@ function Search(props) {
   const handleOutputSubmit = (event) => {
     event.preventDefault();
     const searchResults = searchPool(search);
-    props.setSearchResult(searchResults);
+    props.setSearchResult(searchResults); // this LIFTS searchResults back up to Parent via setSearchResult
+    setDisplaySearch(search)
+    setSearch("");
   };
   return (
     <div>
@@ -78,6 +81,7 @@ function Search(props) {
           Submit
         </button>
       </form>
+      <h3 className="centered">{displaySearch}</h3>
     </div>
   );
 }

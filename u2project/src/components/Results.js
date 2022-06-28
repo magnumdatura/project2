@@ -6,7 +6,7 @@ function Results(props) {
   const [result, setResult] = useState({});
 
   let resultsArr = props.results;
-  console.table(resultsArr);
+  // console.table(resultsArr);
 
   let displayArr = [];
   for (let j = 0; j < resultsArr.length; j++) {
@@ -20,14 +20,14 @@ function Results(props) {
   }
   console.table(displayArr);
 
-  let render = displayArr.map((item) => {
+  let render = displayArr.map((item) => {   // MAGIC
     return (
       <div>
         <img
           src={item.image}
           className="image"
           storeName={item.name}
-          storeInstructions={JSON.stringify(item.instructions)}
+          storeInstructions={JSON.stringify(item.instructions)} // u can store attributes in any HTML element, and here we have to JSON.stringify instructions because it comes initially as an array with other information
           onClick={clickState}
         />
         <h2>{item.name}</h2>
@@ -39,7 +39,7 @@ function Results(props) {
 
   function clickState(event) {
     setResult({
-      name: event.target.getAttribute("storeName"),
+      name: event.target.getAttribute("storeName"), // this gets the attribute out from the event.target element we're clicking on
       image: event.target.src,
       instructions: event.target.getAttribute("storeInstructions"),
     });

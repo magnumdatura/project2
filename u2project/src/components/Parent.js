@@ -6,8 +6,6 @@ import Search from "./Search";
 
 const Parent = () => {
   const [searchResult, setSearchResult] = useState([]);
-  const [instructions, setInstructions] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -47,7 +45,7 @@ const Parent = () => {
 
   //     setPrepTime(data.results[0].prep_time_minutes);
   //     setImage(data.results[0].thumbnail_url);
-  
+
   //   } catch (err) {
   //     setError(err.message);
   //   }
