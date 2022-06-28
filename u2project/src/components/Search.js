@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import data from "./../data";
 
+// console.log(x.replace(/ /g, "_"))
+
 function Search(props) {
   const [search, setSearch] = useState("");
   const handleSearchChange = (event) => {
-    setSearch(event.target.value);
+    const rawSearch = event.target.value;
+    const filterSearch = rawSearch.replace(/ /g, "_");
+    setSearch(filterSearch);
     searchPool(search);
   };
 
@@ -24,19 +28,6 @@ function Search(props) {
   const handleOutputSubmit = (event) => {
     event.preventDefault();
     const searchResults = searchPool(search);
-    // console.log(searchResults);
-    // const itemArr = [];
-    // for (let j = 0; j < searchResults.length; j++) {
-    //   const obj = {
-    //     name: searchResults[j].name,
-    //     description: searchResults[j].description,
-    //     instructions: searchResults[j].instructions,
-    //     image: searchResults[j].thumbnail_url,
-    //   };
-    //   itemArr.push(obj);
-    // }
-
-    // console.table(itemArr);
     props.setSearchResult(searchResults);
   };
   return (

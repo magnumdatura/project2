@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PopupModal from "./PopupModal";
+import Result from "../Result";
 
 function Results(props) {
-//   const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
+  const [result, setResult] = useState({});
 
   let resultsArr = props.results;
-  console.table(resultsArr);
+  // console.table(resultsArr);
 
   let displayArr = [];
   for (let j = 0; j < resultsArr.length; j++) {
@@ -22,19 +24,46 @@ function Results(props) {
   let render = displayArr.map((item) => {
     return (
       <div>
-        <img src={item.image} className="image" />
+        <img
+          src={item.image}
+          className="image"
+          storeName={item.name}
+          storeInstructions={JSON.stringify(item.instructions)}
+          onClick={clickState}
+        />
         <h2>{item.name}</h2>
         <p>{item.description}</p>
-        {/* <PopupModal
-          image={item.image}
-          name={item.name}
-          instructions={item.instructions}
-        ></PopupModal> */}
+        <br />
       </div>
     );
   });
 
-  return <div>{render}</div>;
+  function clickState(event) {
+    setResult({
+      name: event.target.getAttribute("storeName"),
+      image: event.target.src,
+      instructions: event.target.getAttribute("storeInstructions"),
+    });
+    setClick(true);
+  }
+
+  function unclick(event) {
+    setClick(false);
+  }
+
+  return (
+    <div>
+      {render}
+      {click && (
+        <PopupModal
+          name={result.name}
+          image={result.image}
+          instructions={result.instructions}
+          unclick={unclick}
+        ></PopupModal>
+      )}
+    </div>
+  );
 }
 
 export default Results;

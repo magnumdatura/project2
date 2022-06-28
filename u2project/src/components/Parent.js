@@ -5,13 +5,9 @@ import Results from "./Results";
 import Search from "./Search";
 
 const Parent = () => {
-  // const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  // const [name, setName] = useState("");
-  // const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
-  // const [prepTime, setPrepTime] = useState("");
-  // const [image, setImage] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -118,19 +114,8 @@ const Parent = () => {
 
   return (
     <div className="app">
-      {/* <form onSubmit={handleOutputSubmit}> */}
-        <Search setSearchResult={setSearchResult}/>
-        {/* <input
-          id="search"
-          onChange={handleSearchChange}
-          className="col-md-12"
-          value={search}
-        /> */}
-        {/* <button type="submit" className="btn">
-          Submit
-        </button>
-      </form> */}
-      <Results results={searchResult}/>
+      <Search setSearchResult={setSearchResult} />
+      <Results results={searchResult} />
       {/* {JSON.stringify(searchResult)} */}
       <br />
     </div>

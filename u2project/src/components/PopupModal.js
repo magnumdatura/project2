@@ -3,37 +3,45 @@ import ReactDOM from "react-dom";
 
 import styles from "./PopupModal.module.css";
 
-const OverLay = (props) => {
-  return (
-    <div className={styles.backdrop} onClick={props.okayClicked}>
-      <div className={`${styles.board} ${styles.modal}`}>
-        <img src={props.image} />
-        <header className={styles.header}>
-          <h2>{props.name}</h2>
-        </header>
-        <div className={styles.content}>
-          <p>{props.instructions}</p>
-        </div>
-        {/* <footer className={styles.actions}>
-          <Button onClick={props.okayClicked}>Okay</Button>
-        </footer> */}
-      </div>
-    </div>
-  );
-};
-
 const PopupModal = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
         <OverLay
-          title={props.title}
-          message={props.message}
-          okayClicked={props.okayClicked}
+          image={props.image}
+          name={props.name}
+          instructions={props.instructions}
+          unclick={props.unclick}
         />,
         document.querySelector("#modal-root")
       )}
     </React.Fragment>
+  );
+};
+
+const OverLay = (props) => {
+  const obj = JSON.parse(props.instructions);
+  const indivRender = obj.map((item) => {
+    return (
+      <div>
+        <p>{item.display_text}</p>
+      </div>
+    );
+  });
+
+  return (
+    <div className={styles.backdrop} onClick={props.unclick}>
+      <div className={`${styles.board} ${styles.modal}`}>
+        <header className={styles.header}>
+          <h2>{props.name}</h2>
+        </header>
+        <img src={props.image} width="500" />
+        <div className={styles.content}>{indivRender}</div>
+        {/* <footer className={styles.actions}>
+          <Button onClick={props.okayClicked}>Okay</Button>
+        </footer> */}
+      </div>
+    </div>
   );
 };
 
