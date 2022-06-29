@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ReactContext from "../context/react-context";
+import Navbar from "./Navbar";
 // import { isCompositeComponent } from "react-dom/test-utils";
 // import data from "./../data";
 import Results from "./Results";
@@ -8,6 +10,8 @@ const Parent = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  // const [isFavorite, setIsFavorite] = useState(false);
+  const [allResults, setAllResults] = useState([]);
 
   // const options = {
   //   method: "GET",
@@ -113,12 +117,18 @@ const Parent = () => {
   // };
 
   return (
-    <div className="app">
-      <Search setSearchResult={setSearchResult} />
-      <Results results={searchResult} />
-      {/* {JSON.stringify(searchResult)} */}
-      <br />
-    </div>
+    <ReactContext.Provider value={{ allResults, setAllResults }}>
+      <div className="app">
+        {/* <Navbar /> */}
+        <h1>Flavor fidget spinner</h1>
+        <Search setSearchResult={setSearchResult} />
+        {JSON.stringify(allResults)}
+        <Results results={searchResult} />
+        {/* {JSON.stringify(searchResult)} */}
+
+        <br />
+      </div>
+    </ReactContext.Provider>
   );
 };
 

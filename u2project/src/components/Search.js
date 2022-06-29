@@ -37,7 +37,7 @@ function Search(props) {
   //   const url =
   //     "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes";
   //   fetchPost(url);
-  // }, [setSearch, search]);
+  // }, [search]);
 
   const handleSearchChange = (event) => {
     const rawSearch = event.target.value;

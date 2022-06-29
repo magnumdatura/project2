@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
-
 import styles from "./PopupModal.module.css";
+import ReactContext from "../context/react-context";
 
 const PopupModal = (props) => {
   return (
@@ -11,6 +11,7 @@ const PopupModal = (props) => {
           image={props.image}
           name={props.name}
           instructions={props.instructions}
+          description={props.description}
           unclick={props.unclick}
         />,
         document.querySelector("#modal-root")
@@ -31,14 +32,30 @@ const OverLay = (props) => {
     );
   });
 
+  const reactCtx = useContext(ReactContext);
+
+  function addToFavorites() {
+    // reactCtx.setIsFavorite(!reactCtx.isFavorite); // this creates a TOGGLE function of the checkbox, by setting it to be the opposite of whats already set state
+    reactCtx.setAllResults((prevState) => {
+      return [...prevState, props.name];
+    });
+  }
+
   return (
-    <div className={styles.backdrop} onClick={props.unclick}>
+    <div className={styles.backdrop}>
       <div className={`${styles.board} ${styles.modal}`}>
-        <header className={styles.header}>
-          <h2>{props.name}</h2>
-        </header>
-        <img src={props.image} className={styles.image} />
-        <div className={styles.content}>{indivRender}</div>
+        <div onClick={props.unclick}>
+          <header className={styles.header}>
+            <h2>{props.name}</h2>
+          </header>
+          <img src={props.image} className={styles.image} />
+          <div className={styles.content}>{indivRender}</div>
+        </div>
+        {/* <form>
+          <button onClick={addToFavorites} type="submit" className="btn">
+            Favorite
+          </button>
+        </form> */}
       </div>
     </div>
   );
