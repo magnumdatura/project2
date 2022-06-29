@@ -34,7 +34,9 @@ const OverLay = (props) => {
 
   const reactCtx = useContext(ReactContext);
 
-  function addToFavorites() {
+  function addToFavorites(event) {
+    event.preventDefault();
+
     // reactCtx.setIsFavorite(!reactCtx.isFavorite); // this creates a TOGGLE function of the checkbox, by setting it to be the opposite of whats already set state
     reactCtx.setAllResults((prevState) => {
       return [...prevState, props.name];
@@ -51,11 +53,11 @@ const OverLay = (props) => {
           <img src={props.image} className={styles.image} />
           <div className={styles.content}>{indivRender}</div>
         </div>
-        {/* <form>
+        <form>
           <button onClick={addToFavorites} type="submit" className="btn">
             Favorite
           </button>
-        </form> */}
+        </form>
       </div>
     </div>
   );
