@@ -5,16 +5,17 @@ import { Route, Navigate, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className>
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<Navigate replace to="/parent" />} />
-        <Route path="/parent" element={<Parent />} />
+    <div>
+    {/* // <div className>
+    //   <Navbar />
+    //   <Routes>
+    //     <Route path="/" element={<Navigate replace to="/parent" />} />
+    //     <Route path="/parent" element={<Parent />} />
         
 
         
-      </Routes> */}
-      <Parent />
+    //   </Routes> */}
+    <Parent />
     </div>
   );
 }

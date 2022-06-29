@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactContext from "../context/react-context";
+import Favorites from "./Favorites";
 import Navbar from "./Navbar";
 // import { isCompositeComponent } from "react-dom/test-utils";
 // import data from "./../data";
@@ -12,6 +13,7 @@ const Parent = () => {
   const [error, setError] = useState(null);
   // const [isFavorite, setIsFavorite] = useState(false);
   const [allResults, setAllResults] = useState([]);
+  const [openFavorite, setOpenFavorite] = useState(false);
 
   // const options = {
   //   method: "GET",
@@ -116,14 +118,22 @@ const Parent = () => {
   //   setOutput(itemArr);
   // };
 
+  function openFavorites(event) {
+    event.preventDefault();
+    setOpenFavorite(true);
+}
+
   return (
-    <ReactContext.Provider value={{ allResults, setAllResults }}>
+    <ReactContext.Provider value={{ allResults, setAllResults, openFavorite, setOpenFavorite, openFavorites }}>
       <div className="app">
         {/* <Navbar /> */}
         <h1>Flavor fidget spinner</h1>
         <Search setSearchResult={setSearchResult} />
-        {JSON.stringify(allResults)}
+        <button onClick={openFavorites}>
+        Favorites
+      </button>
         <Results results={searchResult} />
+        <Favorites favorites={allResults} />
         {/* {JSON.stringify(searchResult)} */}
 
         <br />
