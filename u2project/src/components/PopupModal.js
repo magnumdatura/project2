@@ -73,7 +73,7 @@ const OverLay = (props) => {
 
   return (
     <div className={styles.backdrop}>
-      <div className={`${styles.board} ${styles.modal}`}>
+      <div className={`${styles.board} ${styles.modal} `}>
         <div onClick={props.unclick}>
           <header className={styles.header}>
             <h2>{props.name}</h2>
@@ -81,16 +81,26 @@ const OverLay = (props) => {
           <img src={props.image} className={styles.image} />
           <div className={styles.content}>{indivRender}</div>
         </div>
-        <form>
-          <button
-            onClick={addToFavorites}
-            type="submit"
-            className="btn"
-            disabled={checkRepeat()}
+
+        <button
+          onClick={addToFavorites}
+          type="submit"
+          className="mx-4 mb-4 relative bottom-0 right-0 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-800 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+          disabled={checkRepeat()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
           >
-            Favorite
-          </button>
-        </form>
+            <path
+              fillRule="evenodd"
+              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );

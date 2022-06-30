@@ -33,6 +33,7 @@ function Results(props) {
     // MAGIC
     return (
       <div key={i}>
+        <div className="m-5 p-6 w-122 bg-white rounded-xl shadow-lg flex-wrap items-center ">
         <img
           src={item.image}
           className="image"
@@ -41,9 +42,10 @@ function Results(props) {
           storedescription={item.description}
           onClick={clickState}
         />
-        <h2>{item.name}</h2>
+        <h2 className="text-2xl font-serif my-5">{item.name}</h2>
         <p>{item.description}</p>
         <br />
+        </div>
       </div>
     );
   });
