@@ -29,17 +29,16 @@ function Results(props) {
   //   ...prevState, displayArr])
   // })
 
-
-
-  let render = displayArr.map((item) => {   // MAGIC
+  let render = displayArr.map((item, i) => {
+    // MAGIC
     return (
-      <div>
+      <div key={i}>
         <img
           src={item.image}
           className="image"
-          storeName={item.name}
-          storeInstructions={JSON.stringify(item.instructions)} // u can store attributes in any HTML element, and here we have to JSON.stringify instructions because it comes initially as an array with other information
-          storeDescription={item.description}
+          storename={item.name}
+          storeinstructions={JSON.stringify(item.instructions)} // u can store attributes in any HTML element, and here we have to JSON.stringify instructions because it comes initially as an array with other information
+          storedescription={item.description}
           onClick={clickState}
         />
         <h2>{item.name}</h2>
@@ -51,10 +50,10 @@ function Results(props) {
 
   function clickState(event) {
     setResult({
-      name: event.target.getAttribute("storeName"), // this gets the attribute out from the event.target element we're clicking on
+      name: event.target.getAttribute("storename"), // this gets the attribute out from the event.target element we're clicking on
       image: event.target.src,
-      instructions: event.target.getAttribute("storeInstructions"),
-      description: event.target.getAttribute("storeDescription")
+      instructions: event.target.getAttribute("storeinstructions"),
+      description: event.target.getAttribute("storeDescription"),
     });
     setClick(true);
   }
@@ -67,7 +66,7 @@ function Results(props) {
     <div>
       {render}
       {click && (
-        <PopupModal 
+        <PopupModal
           name={result.name}
           image={result.image}
           instructions={result.instructions}

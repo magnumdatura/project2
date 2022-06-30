@@ -52,16 +52,23 @@ const OverLay = (props) => {
   // this button function checks for repeated items that are going from PopUpModal to Favorites List (so that there are no repeats in Favlist)
   function checkRepeat() {
     // .find is a method that runs through an array and finds the first item that passes the condition (here: item.name which lies in the Favorite list vs. props.name which lives in the popupmodal (which originally derives from Results))
-    const noFavorites = reactCtx.allResults.find(  // we could also use .includes method here, which returns a true/false || item.name.includes(props.name);
+    const noFavorites = reactCtx.allResults.find(
+      // we could also use .includes method here, which returns a true/false || item.name.includes(props.name); (okay wait doesnt work peep line 66)
       (item) => item.name === props.name
     );
 
-    // noFavorites === defined --> checks if that first returned element does exist, and so there is a repeat, and so therefore disabled={true}, and the button will be greyed out 
+    // noFavorites === defined --> checks if that first returned element does exist, and so there is a repeat, and so therefore disabled={true}, and the button will be greyed out
     if (noFavorites === undefined) {
       return false;
     } else {
       return true;
     }
+    // for (let i =0; i < reactCtx.allResults.length; i++) {
+    // const noFavorites = reactCtx.allResults[i].name.includes(props.name);   // cant really use .includes because need an array of the names in the array allResults
+    // }
+    // console.log(reactCtx.allResults);
+    // console.log(props.name);
+    // console.log(noFavorites);
   }
 
   return (

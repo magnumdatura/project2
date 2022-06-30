@@ -52,8 +52,6 @@ function Search(props) {
       for (let k = 0; k < data.results[i].tags.length; k++) {
         if (data.results[i].tags[k].name === search) {
           searchPool.push(data.results[i]);
-        } else if (search !== data.results[i].tags[k].name) {
-          console.log("Sorry! Try a different search term")
         }
       }
     }
@@ -65,6 +63,13 @@ function Search(props) {
     event.preventDefault();
     const searchResults = searchPool(search);
     props.setSearchResult(searchResults); // this LIFTS searchResults back up to Parent via setSearchResult
+
+    // so that is if the searchPool [] array in line 50 is empty, that is that condition 53 is not met, so the search !== data.results[i].tags[k].name, then the searchbar input does not match any tags in the data, so pop up alert
+    
+    if (searchResults.length === 0) {
+      window.alert("Sorry search again dummi")
+    }
+
     setDisplaySearch(search)
     setSearch("");
   };
