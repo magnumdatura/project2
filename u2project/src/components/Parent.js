@@ -121,17 +121,44 @@ const Parent = () => {
   function openFavorites(event) {
     event.preventDefault();
     setOpenFavorite(true);
-}
+  }
 
   return (
-    <ReactContext.Provider value={{ allResults, setAllResults, openFavorite, setOpenFavorite, openFavorites }}>
-      <div className="app">
+    <ReactContext.Provider
+      value={{
+        allResults,
+        setAllResults,
+        openFavorite,
+        setOpenFavorite,
+        openFavorites,
+      }}
+    >
+      <div className="app container">
         {/* <Navbar /> */}
-        <h1>Flavor fidget spinner</h1>
+        <h1 className="text-5xl m-6 object-center font-sans">
+          Flavor fidget spinner
+        </h1>
         <Search setSearchResult={setSearchResult} />
-        <button onClick={openFavorites}>
-        Favorites
-      </button>
+        <button
+          onClick={openFavorites}
+          className="absolute top-21 right-5 px-4 py-4 text-sm text-red-600 font-semibold rounded-full border border-red-700 hover:text-white hover:bg-red-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
+          </svg>
+        </button>
+
         <Results results={searchResult} />
         <Favorites favorites={allResults} />
         {/* {JSON.stringify(searchResult)} */}

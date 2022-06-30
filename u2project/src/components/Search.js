@@ -27,7 +27,7 @@ function Search(props) {
 
   //     const data = await res.json();
   //     setData(data);
-  
+
   //   } catch (err) {
   //     setError(err.message);
   //   }
@@ -65,12 +65,12 @@ function Search(props) {
     props.setSearchResult(searchResults); // this LIFTS searchResults back up to Parent via setSearchResult
 
     // so that is if the searchPool [] array in line 50 is empty, that is that condition 53 is not met, so the search !== data.results[i].tags[k].name, then the searchbar input does not match any tags in the data, so pop up alert
-    
+
     if (searchResults.length === 0) {
-      window.alert("Sorry search again dummi")
+      window.alert("Sorry search again dummi");
     }
 
-    setDisplaySearch(search)
+    setDisplaySearch(search);
     setSearch("");
   };
   return (
@@ -79,14 +79,26 @@ function Search(props) {
         <input
           id="search"
           onChange={handleSearchChange}
-          className="col-md-12"
+          className="shadow-lg mx-6"
           value={search}
         />
-        <button type="submit" className="btn">
+        {/* <button type="submit" className="btn">
+          
+          Submit
+        </button> */}
+        <button
+          className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-800 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+          type="submit"
+        >
           Submit
         </button>
       </form>
-      <h3 className="centered">{displaySearch}</h3>
+      <div class="p-6 w-64 mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4 ">
+        <div>
+          <p class="text-slate-500 text-center">Grub hub wub wub</p>
+          <div class="text-2xl font-medium text-purple-600 text-justify">{displaySearch}</div>
+        </div>
+      </div>
     </div>
   );
 }
