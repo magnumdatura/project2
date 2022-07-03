@@ -1,1 +1,1 @@
-![flowchart explaining project 2](src/flowchart.png)
+![flowchart explaining project 2](flowchart.png)
