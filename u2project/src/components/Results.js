@@ -22,7 +22,7 @@ function Results(props) {
     };
     displayArr.push(obj);
   }
-  console.table(displayArr);
+  // console.table(displayArr);
 
   // reactCtx.setAllResults((prevState) => {
   //   return([
