@@ -1,1 +1,1 @@
-![alt text](http://url/to/flowchart.png)
+![flowchart explaining project 2](src/flowchart.png)
